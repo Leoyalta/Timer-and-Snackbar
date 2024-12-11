@@ -3,7 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Timer</title>
+    <script type="module" crossorigin src="/Timer-and-Snackbar/1-timer.js"></script>
+    <link rel="modulepreload" crossorigin href="/Timer-and-Snackbar/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/Timer-and-Snackbar/assets/vendor-A92OCY9B.js">
+    <link rel="stylesheet" crossorigin href="/Timer-and-Snackbar/assets/vendor-CUZofXIC.css">
+    <link rel="stylesheet" crossorigin href="/Timer-and-Snackbar/assets/1-timer-BrFxmzoK.css">
   </head>
-  <body></body>
+  <body>
+    <a href="./index.html"> Back to main</a>
+    <br /><br />
+    <section>
+      <div class="input-box">
+        <input type="text" id="datetime-picker" />
+        <button type="button" data-start>Start</button>
+      </div>
+
+      <div class="timer">
+        <div class="field">
+          <span class="value" data-days>00</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="field">
+          <span class="value" data-hours>00</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="field">
+          <span class="value" data-minutes>00</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="field">
+          <span class="value" data-seconds>00</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+    </section>
+
+  </body>
 </html>
