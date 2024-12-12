@@ -34,8 +34,8 @@ const options = {
         message: 'Please choose a date in the future',
       });
       startBtn.disabled = true;
-      startBtn.classList.toggle('disabled');
-      datePicker.classList.toggle('disabled');
+      startBtn.classList.add('disabled');
+      datePicker.classList.add('disabled');
     } else {
       startBtn.disabled = false;
       startBtn.classList.remove('disabled');
@@ -57,12 +57,19 @@ function updateTime({ days, hours, minutes, seconds }) {
 }
 let intervalId = null;
 function startTimer() {
+  if (!userSelectedDate) {
+    iziToast.show({
+      message: 'Please select a date first!',
+    });
+    return;
+  }
+
   intervalId = setInterval(() => {
-    const acutalTime = Date.now();
-    const timerValue = userSelectedDate - acutalTime;
+    const actualTime = Date.now();
+    const timerValue = userSelectedDate - actualTime;
     if (timerValue <= 0) {
-      clearInterval(intervalId); // Зупиняємо таймер
-      updateTime(convertMs(0)); // Встановлюємо значення на 00:00:00:00
+      clearInterval(intervalId);
+      updateTime(convertMs(0));
       iziToast.show({
         title: 'Finished!',
         message: 'Timer finished!',
@@ -70,14 +77,12 @@ function startTimer() {
       return;
     }
     const time = convertMs(timerValue);
-
     updateTime(time);
   }, 1000);
 
   datePicker.disabled = true;
   startBtn.disabled = true;
 }
-
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
